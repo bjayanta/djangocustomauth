@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Signin</h1>
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username">
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+        </div>
+
+        <input type="submit" value="Sign In">
+        <a href="{% url 'account.signup' %}">Sign Up</a>
+    </form>
 {% endblock %}

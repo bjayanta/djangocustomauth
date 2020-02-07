@@ -8,7 +8,7 @@ Simple custom **authentication** system in **Django 3** Python.
 ### In MySQL
 There is a bug at **django_admin_log** table in MySQL database, to fix the bug:
 - Remove the **django_admin_log** table
-- Run the SQl commend below
+- Run the SQL commend below
 ```sql
 CREATE TABLE `django_admin_log` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,

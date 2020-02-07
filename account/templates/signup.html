@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- errors -->
+    {{ form.errors }}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="username">{{ form.username.label }}*</label>
+            {{ form.username }}
+        </div>
+
+        <div class="form-group">
+            <label for="email">{{ form.email.label }}*</label>
+            {{ form.email }}
+        </div>
+
+        <div class="form-group">
+            <label for="password">{{ form.password1.label }}*</label>
+            {{ form.password1 }}
+        </div>
+
+        <div class="form-group">
+            <label for="password">{{ form.password2.label }}*</label>
+            {{ form.password2 }}
+        </div>
+
+        <div class="form-group">
+            <label for="test">{{ form.test.label }}</label>
+            {{ form.test }}
+        </div>
+
+        <input type="submit" name="Create User">
+        <a href="{% url 'account.signin' %}">Sign In</a>
+    </form>
+{% endblock %}

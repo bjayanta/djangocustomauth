@@ -2,4 +2,14 @@
 
 {% block content %}
     <h1>Home</h1>
+
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+        <a href="{% url 'account.signout' %}">Sign Out</a>
+    {% else %}
+        <p>Welcome, new user. Please log in.</p>
+        <a href="{% url 'account.signin' %}">Sign In</a>
+    {% endif %}
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam incidunt hic commodi sequi reiciendis libero! Dolores doloremque nostrum tenetur maiores corporis quis. Officia repellendus nesciunt itaque sapiente, odio voluptatibus laudantium.</p>
 {% endblock %}
