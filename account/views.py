@@ -23,8 +23,12 @@ class Signup(View):
     def post(self, request):
         self.context['form'] = CreateUserForm(request.POST)
         if self.context['form'].is_valid():
-            self.context['form'].save()
+            user = self.context['form'].save()
 
+            user.refresh_from_db()
+            user.is_active = False
+            user.save()
+            
             user = self.context['form'].cleaned_data.get('username')
             messages.success(request, 'Account is created for ' + user)
 

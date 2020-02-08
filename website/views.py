@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class Home(LoginRequiredMixin, View):
     context = {}
     login_url = '/account/'
-    # redirect_field_name = 'next'
+    redirect_field_name = 'next'
 
     def get(self, request):
         return render(request, 'home.html', self.context)
