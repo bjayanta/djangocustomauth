@@ -57,6 +57,7 @@ class Signup(View):
             email_message.send()
 
             email = self.context['form'].cleaned_data.get('email')
+
             # messages.success(request, 'Account is created for ' + user)
             messages.success(request, 'You\'re Almost Done... A verification email was sent to: ' + email + '. Open this email and click the link to activate your account.')
 
@@ -74,7 +75,7 @@ class Signin(View):
     def get(self, request):
         if request.user.is_authenticated:
             return redirect('home')
-        
+        # return view
         return render(request, 'signin.html', self.context)
 
     def post(self, request):
@@ -107,7 +108,7 @@ class ActivateAccount(View):
         try:
             uid = force_text(urlsafe_base64_decode(uidb64))
             user = User.objects.get(pk=uid)
-        except Exception as identifier:
+        except Exception:
             user = None
 
         if user is not None and generate_token.check_token(user, token):
